@@ -4,7 +4,7 @@ void SuffixTrieNodeSearch::insertSuffix(string str, lli start, lli index) {
     indexes->push_back(make_pair(start, index));
 
     if (str.length() > 0) {
-        char charIndex = str.at(0);
+        char charIndex = tolower(str.at(0));
 
         if (children[charIndex] == NULL) {
             children[charIndex] = new SuffixTrieNodeSearch();
@@ -30,7 +30,7 @@ void print_to_text(string pattern, vector<ii>* result) {
     ofstream f_out;
     f_out.open("output/search.txt");
     if (result == NULL) {
-        f_out << "Search for " << pattern << ":" << endl;
+        f_out << "Search for: " << pattern << endl;
         f_out << "Pattern not found" << endl;
     } else {
         auto i = result->begin();

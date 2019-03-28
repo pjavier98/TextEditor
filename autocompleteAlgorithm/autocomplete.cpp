@@ -52,6 +52,9 @@ void SuffixTrieAutocomplete::read_text() {
     f_in.open("input/input.txt");
     f_out.open("output/autocomplete.txt");
     while (f_in >> word) {
+        for(lli i = 0; i < word.size(); i++) {
+            word[i] = tolower(word[i]);
+        }
         if (word[word.size() - 1] == '*' and word[word.size() - 2] == '\\') {
             vs output;
             root.autocomplete(word.substr(0, word.size() - 2), output);

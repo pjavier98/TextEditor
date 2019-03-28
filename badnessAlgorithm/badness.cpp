@@ -62,11 +62,8 @@ void badness() {
     vs text;
     vlli lengthWords;
     lengthWords.push_back(0);
-    
-
     fstream f_in;
     f_in.open("input/input.txt");
-
     while (true) {
         if (f_in.eof()) {
             break;
@@ -81,7 +78,6 @@ void badness() {
     cin >> weight;
     cout << endl;
 
-    cout << "cheou aqui" << endl;
     lli size = text.size();
     vvlli matrix = make_matrix(size, weight, lengthWords);
     vlli print = make_arrays(matrix, size);
