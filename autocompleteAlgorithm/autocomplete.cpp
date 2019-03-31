@@ -1,9 +1,9 @@
 #include "autocomplete.h"
 
-void SuffixTrieNodeAutocomplete::print(string str, vs &output) {
+void SuffixTrieNodeAutocomplete::insertInVector(string str, vs &output) {
     auto it = children.begin();
     for (it; it != children.end(); ++it) {
-        children[it->first]->print(str + (char)it->first, output);
+        children[it->first]->insertInVector(str + (char)it->first, output);
     }
     if (children.size() == 0) {
         output.push_back(str);
@@ -16,7 +16,7 @@ void SuffixTrieNodeAutocomplete::autocomplete(string str, vs &output) {
         aux = children[str[0]];
 
         if (str.size() == 1) {
-            aux->print(str, output);
+            aux->insertInVector(str, output);
         } else {
             lli i;
             for (i = 1; i < str.size(); i++) {
@@ -28,7 +28,7 @@ void SuffixTrieNodeAutocomplete::autocomplete(string str, vs &output) {
                 }
             }
             if (i == str.size()) {
-                aux->children[str[i - 1]]->print(str, output);
+                aux->children[str[i - 1]]->insertInVector(str, output);
             }
         }
     }
@@ -52,9 +52,6 @@ void SuffixTrieAutocomplete::read_text() {
     f_in.open("input/input.txt");
     f_out.open("output/autocomplete.txt");
     while (f_in >> word) {
-        for(lli i = 0; i < word.size(); i++) {
-            word[i] = tolower(word[i]);
-        }
         if (word[word.size() - 1] == '*' and word[word.size() - 2] == '\\') {
             vs output;
             root.autocomplete(word.substr(0, word.size() - 2), output);
