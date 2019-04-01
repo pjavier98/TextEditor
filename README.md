@@ -38,13 +38,16 @@ text
 ![output text](images/out_badness.png)
 
 #### Explain and Complexity:
-Para o texto justificado, a ideia é ter linhas balanceadas, ou seja, minimizar 
-os custos totais para equilibrar os espaços, usamos programação dinâmica e 
-preenchemos em uma tabela onde primeiro calculamos os custos de colocar todas 
-as palavras em uma única linha, se não couber, é considerado como infinito para
-não incluir na solução. Com a programação dinâmica evitamos de recalcular 
-subproblemas já calculados. Com isso obtemos uma complexidade de O(n²) para 
-calcularmos os custos e salvarmos na matriz.
+For justified text, the idea is to have balanced lines, that is, to minimize
+the total costs to balance the spaces, using the idea of dynamic programming
+we fill in a matrix[i][j] where we first calculate the costs of putting words
+from i to j per line. If the sequence of words from i to j does not fit on the line, the index
+of the matrix[i][j] is considered to be infinite to not include in the solution. With the matrix
+created, we use dynamic programming where we will assemble our solution verifying that the
+cost of adding a word and the cost of having added the previous word is the best
+solution, if it is included in the solution. With dynamic programming, we
+recalculate already calculated subproblems. With this we obtain a complexity of O (n²) for
+we calculate the costs of the matrix and O (n) to assemble the cost vector using dynamic programming.
 
 ### Autocomplete:
 * Enter the text in the file **input.txt** that is in the **input folder**
@@ -60,12 +63,14 @@ calcularmos os custos e salvarmos na matriz.
 ![output text](images/out_autocomplete.png)
 
 #### Explain and Complexity:
-O algoritmo usado é um Trie de sufixos, onde a ideia é criar uma árvore
-com todas as palavras presentes no texto, onde um prefixo pode ser um 
-possivel prefixo de outra palavra, portanto se construirmos uma Trie, 
-podemos encontrar um padrão de prefixos e adicionar uma palavra quando 
-não possuimos seu sufixo. Com isso conseguimos uma complexidade de O(n) 
-onde n é o tamanho do texto para criarmos a árvore.
+The algorithm used is a Trie of suffixes, where the idea is to create a tree
+with all the words present in the text, where a prefix can be a
+possible prefix of another word, so if we construct a Trie,
+we can find a pattern of prefixes and add a word when
+we do not have its suffix. With this we get a complexity of O (n)
+where n is the size of the text to create the tree. To search for a prefix
+in this tree we have a complexity of O (m) where m is the prefix of the word in
+you want to search.
 
 ### Search:
 * Enter the text in the file **input.txt** that is in the **input folder**
