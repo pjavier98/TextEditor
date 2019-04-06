@@ -1,17 +1,13 @@
 #include "badness.h"
 
-lli print_to_text(vlli print, vs text, lli size, ofstream& f_out) {
-    lli k;
-    if (print[size] == 1) {
-        k = 1;
-    } else {
-        k = print_to_text(print, text, print[size] - 1, f_out) + 1;
+void print_to_text(vlli print, vs text, lli size, ofstream& f_out) {
+    if(print[size] != 1) {
+        print_to_text(print, text, print[size] - 1, f_out);
     }
     for (lli i = print[size]; i <= size; i++) {
         f_out << text[i - 1] << " ";
     }
     f_out << endl;
-    return k;
 }
 
 vlli make_arrays(vvlli matrix, lli size) {
