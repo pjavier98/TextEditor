@@ -1,4 +1,9 @@
 # Text Editor (C++):
+## Team:
+* Pedro Javier Paneca Cordova
+* Davi Jose de Melo Silva
+* Gustavo Augusto Calazans Lopes
+
 **Note:** There will be no graphic interface.
 
 ## How to run the program:
