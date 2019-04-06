@@ -7,6 +7,8 @@
 **Note:** There will be no graphic interface.
 
 ## How to run the program:
+1. Clone the repository;
+2. Open the project folder;
 
 ### Linux:
 1. Open the terminal;
