@@ -20,8 +20,8 @@ vlli make_arrays(vvlli matrix, lli size) {
     }
     for (lli j = 1; j <= size; j++) {
         for (lli i = 1; i <= j; i++) {
-            if (matrix[i][j] != INT_MAX && (matrix[i][j] + cost[j - 1]) < cost[j]) {
-                cost[j] = matrix[i][j] + cost[j - 1];
+            if (matrix[i][j] != INT_MAX && (matrix[i][j] + cost[i - 1]) < cost[j]) {
+                cost[j] = matrix[i][j] + cost[i - 1];
                 print[j] = i;
             }
         }

@@ -12,6 +12,7 @@
 class SuffixTrieNodeAutocomplete {
    private:
     char letter;
+    bool end = false;
     map<lli, SuffixTrieNodeAutocomplete*> children;
    public:
     /* 

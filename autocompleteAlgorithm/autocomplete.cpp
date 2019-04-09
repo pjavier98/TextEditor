@@ -3,10 +3,8 @@
 void SuffixTrieNodeAutocomplete::insertInVector(string str, vs &output) {
     auto it = children.begin();
     for (it; it != children.end(); ++it) {
+        if(end) output.push_back(str + (char)it->first);
         children[it->first]->insertInVector(str + (char)it->first, output);
-    }
-    if (children.size() == 0) {
-        output.push_back(str);
     }
 }
 
@@ -42,6 +40,7 @@ void SuffixTrieNodeAutocomplete::insertSuffix(string suffix, lli i) {
         children[suffix[i]] = new SuffixTrieNodeAutocomplete();
         letter = suffix[i];
     }
+    if(i == suffix.size() - 1) end = true;
     children[suffix[i]]->insertSuffix(suffix, i + 1);
 }
 
